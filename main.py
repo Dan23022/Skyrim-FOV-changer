@@ -22,13 +22,13 @@ class App(QWidget):
             popup.exec_()
 
         else:
-            path = expanduser('~\Documents\My Games\Oblivion\Oblivion.ini')
+            path = expanduser('~\Documents\My Games\Skyrim Special Edition\Skyrim.ini')
 
             with open(path, 'r', encoding='utf-8') as file:
                 os.chmod(path, S_IWUSR | S_IREAD)
                 data = file.readlines()
 
-            data[132] = f'fDefaultFOV={fov}\n'
+            data[20] = f'fDefaultWorldFOV={fov}\n'
 
             with open(path, 'w', encoding='utf-8') as file:
                 file.writelines(data)
@@ -41,7 +41,7 @@ class App(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.title = 'Oblivion FOV changer'
+        self.title = 'Skyrim FOV changer'
         app.setStyle('Fusion')
         self.initUI()
 
@@ -61,8 +61,8 @@ class App(QWidget):
         qp.setColor(QPalette.Window, Qt.black)
         app.setPalette(qp)
 
-        self.window_title_text = QLabel('<font color="orange">Oblivion FOV perma-Set', self)
-        self.window_title_text.move(width//2-110, height//2-80)
+        self.window_title_text = QLabel('<font color="orange">Skyrim FOV Changer', self)
+        self.window_title_text.move(width//2-103, height//2-80)
         self.window_title_text.setFont(QFont('Arial', 16))
 
         self.fov_input = QLineEdit(self)
